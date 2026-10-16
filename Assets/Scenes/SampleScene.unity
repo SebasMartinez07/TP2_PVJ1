@@ -698,6 +698,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -722,8 +723,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.080366686, g: 0.10047566, b: 0.13207549, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -779,6 +780,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 46.129, y: 91.877, z: 1.353}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95115175ef2e8c743b345b8dca1419d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target_p: {fileID: 336969182}
+  distance: 5
+  Offset: {x: 0, y: 1.5, z: 0}
+  sensitivityX: 3
+  sensitivityY: 2
+  minYAngle: -20
+  maxYAngle: 60
 --- !u!1 &1174013943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,14 +1465,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28941b6e092f43c49986a554a64a03f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 7
   currentState: 0
   detectionRadius: 4
-  attackRadius: 2
+  attackRadius: 1.5
   patrolPoints:
   - {fileID: 43994067}
   - {fileID: 453227427}
   waitTimeAtPoint: 2
-  attackCooldown: 1.5
+  attackCooldown: 1
 --- !u!114 &3296219740656259707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,6 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28941b6e092f43c49986a554a64a03f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 7
   currentState: 0
   detectionRadius: 4
   attackRadius: 2

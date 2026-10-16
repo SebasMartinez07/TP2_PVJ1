@@ -4,14 +4,16 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [SerializeField] private float speed = 7f;
+
     public enum AIState { Patrol, Chase, Attack }
 
     [Header("States")]
     [SerializeField] private AIState currentState = AIState.Patrol;
 
     [Header("Detect Settings")]
-    [SerializeField] private float detectionRadius = 8f;
-    [SerializeField] private float attackRadius = 2f;
+    [SerializeField] private float detectionRadius = 4f;
+    [SerializeField] private float attackRadius = 1.4f;
 
     [Header("Patrol Settings")]
     [SerializeField] private Transform[] patrolPoints;
@@ -20,7 +22,7 @@ public class EnemyAI : MonoBehaviour
     private bool isWaitingAtPoint;
 
     [Header("Attack Settings")]
-    [SerializeField] private float attackCooldown = 1.5f;
+    [SerializeField] private float attackCooldown = 1f;
     private bool isAttacking=false;
 
     private NavMeshAgent agent;
@@ -33,7 +35,7 @@ public class EnemyAI : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         attack = GetComponent<Attack>();
-        
+        agent.speed = speed;
     }
 
     private void Start()
