@@ -6,7 +6,6 @@ using Unity.VisualScripting;
 
 public class PlayerMovement : MonoBehaviour
 {
-    /*
     [Header ("Movement Settings")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
@@ -41,8 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 movement = new Vector3(moveHorizontal * -1, 0.0f, moveVertical * -1).normalized;
-        rb.linearVelocity = new Vector3(movement.x * speed, rb.linearVelocity.y, movement.z * speed);
-        //rb.linearVelocity = new Vector3(movement.x * speed, rb.linearVelocity.y, movement.z * speed);
+        rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
     }
 
     private void CheckGround()
@@ -63,5 +61,4 @@ public class PlayerMovement : MonoBehaviour
         Color ColorRay = isGrounded ? Color.green : Color.red;
         Debug.DrawRay(origin, Vector3.down * rayDistance, ColorRay);
     }
-    */
 }
