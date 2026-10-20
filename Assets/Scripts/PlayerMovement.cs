@@ -71,6 +71,4 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.rotation = Quaternion.Euler(0f, rotateY, 0f);
     }
-
-
 }
