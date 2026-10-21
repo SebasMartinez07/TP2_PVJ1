@@ -122,45 +122,48 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void UpdateAttackState(float distanceToPlayer)
+  private void UpdateAttackState(float distanceToPlayer)
+{
+    // Mira al player solo en Y
+    transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
+    // Si el player se aleja, vuelve a perseguir aunque esté en cooldown
+    if (distanceToPlayer > attackRadius)
     {
-  
-        transform.LookAt(new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z));
-        // Transición de regreso a Persecución si se aleja
-
-        if (distanceToPlayer > attackRadius && !isAttacking)
-        {
-            currentState = AIState.Chase;
-            return;
-        }
-        if (!isAttacking)
-        {
-            StartCoroutine(AttackCooldown());
-        }
-
-    }
-
-    IEnumerator AttackCooldown()
-    {
-        isAttacking = true;
-        agent.isStopped = true;
-        ExecuteAttack();
-        yield return new WaitForSeconds(attackCooldown);
-        Debug.Log("Vuelve a atacar");
-        isAttacking = false;
+        currentState = AIState.Chase;
         agent.isStopped = false;
-
-
+        return;
     }
+    if (!isAttacking)
+    {
+        StartCoroutine(AttackCooldown());
+    }
+}
+
 
     private void ExecuteAttack()
+{
+    if (healthSystemPlayer == null) return;
+    Debug.Log("Ataque contra el jugador");
+    // Si tenés el componente Attack, usalo. Si no, hace daño directo con tu HealthSystem
+    if (attack != null)
     {
-        if (healthSystemPlayer != null)
-        {
-            Debug.Log("Ataque  contra el jugador");
-            attack.Melee();
-        }
+        attack.Melee();
     }
+    else
+    {
+        healthSystemPlayer.TakeDamage(15f);
+    }
+}
+IEnumerator AttackCooldown()
+{
+    isAttacking = true;
+    agent.isStopped = true;
+    ExecuteAttack();
+    yield return new WaitForSeconds(attackCooldown);
+    isAttacking = false;
+    agent.isStopped = false;
+    Debug.Log("Vuelve a atacar");
+}
 
     private IEnumerator WaitAndMoveToNextPoint()
     {

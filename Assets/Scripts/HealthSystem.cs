@@ -6,7 +6,7 @@ public class HealthSystem : MonoBehaviour
     [Header("Configuracion Salud")]
     [SerializeField] private float maxHealth = 100f; 
     private float currentHealth; 
-    public float CurrentHealth => currentHealth;//usamos getter y setter para el gameManager - solo lectura
+    public float CurrentHealth => currentHealth;
 
     [SerializeField] private bool isDead;
     public bool IsDead
@@ -33,7 +33,6 @@ public class HealthSystem : MonoBehaviour
          * math.clamp(15, 0, 10) => 10 (es mayor que el maximo, devuelve 10)
          */
 
-        //Debug.Log($"Salud actual: " + currentHealth);
         Debug.Log($"Salud actual: {currentHealth}");
         if (currentHealth <= 0f)
         {
@@ -43,7 +42,7 @@ public class HealthSystem : MonoBehaviour
     private void Dead() 
     { 
         isDead = true; 
-        Debug.Log("Character eliminado"); 
+        Debug.Log("Player eliminado"); 
         // Notificación al GameManager si existiera 
         //GameManager.Instance.ChangeState(GameState.GameOver);
         //Destroy object
