@@ -37,26 +37,37 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update()
+{
+    // Si no estamos jugando, no nos movemos
+    if (GameManager.Instance != null && GameManager.Instance.estadoActual != EstadoJuego.Jugando)
     {
-   
-            moveHorizontal = Input.GetAxis("Horizontal");
-            moveVertical = Input.GetAxis("Vertical");
-
-            CheckGround();
-
-            if (Input.GetButtonDown("Jump") && isGrounded)
-            {
-                rb.AddForce(new Vector3(0, jumpForce, 0));
-            }
-
+        moveHorizontal = 0;
+        moveVertical = 0;
+        return;
     }
 
-    private void FixedUpdate()
-    {
-        Vector3 movement = (transform.forward * moveVertical + transform.right * moveHorizontal).normalized;
-        rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
+    moveHorizontal = Input.GetAxis("Horizontal");
+    moveVertical = Input.GetAxis("Vertical");
+    CheckGround();
 
+    if (Input.GetButtonDown("Jump") && isGrounded)
+    {
+        rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
     }
+}
+
+private void FixedUpdate()
+{
+    // Si está pausado o en menú, frena el Rigidbody
+    if (GameManager.Instance != null && GameManager.Instance.estadoActual != EstadoJuego.Jugando)
+    {
+        rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        return;
+    }
+
+    Vector3 movement = (transform.forward * moveVertical + transform.right * moveHorizontal).normalized;
+    rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
+}
     private void CheckGround()
     {
         Vector3 origin = transform.position;

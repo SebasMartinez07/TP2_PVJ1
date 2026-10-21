@@ -43,11 +43,10 @@ public class HealthSystem : MonoBehaviour
     { 
         isDead = true; 
         Debug.Log("Player eliminado"); 
-        // Notificación al GameManager si existiera 
-        //GameManager.Instance.ChangeState(GameState.GameOver);
-        //Destroy object
-        //efectos
-        //animaciones
+   if (CompareTag("Player"))
+   {
+    GameManager.Instance.Derrota();
+    }
     }
 
 }
