@@ -38,6 +38,9 @@ public class HealthSystem : MonoBehaviour
         {
             Dead();
         }
+
+        FindObjectOfType<HUDManager>().ActualizarVida((int)currentHealth);
+
     }
     private void Dead() 
     { 
