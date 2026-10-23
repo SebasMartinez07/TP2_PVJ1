@@ -2,11 +2,11 @@
 
 ### CubeGame Studios - Programación de Videojuegos 1
 
-**Desarrollador:** Sebastián Luciano Martínez  <b>
-**LU:** TUV000621  <b>
-**Repositorio:** https://github.com/SebasMartinez07/TP2\_PVJ1 <b>
-**Motor:** Unity 3D <b>
-**Versión:** 2022.3.62f3 <b>
+**Desarrollador:** Sebastián Luciano Martínez <br>
+**LU:** TUV000621 <br>
+**Repositorio:** https://github.com/SebasMartinez07/TP2_PVJ1 <br>
+**Motor:** Unity 3D <br>
+**Versión:** 2022.3.62f3 <br>
 
 \---
 
@@ -86,4 +86,3 @@ Lógica: En `Update()` calcula `distPlayer`. Si `distPlayer < radioDeteccion`, `
 [Zona de Victoria](Screenshots/GoalZone.png)
 
 \---
-
