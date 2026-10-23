@@ -2,11 +2,11 @@
 
 ### CubeGame Studios - Programación de Videojuegos 1
 
-**Desarrollador:** Sebastián Luciano Martínez  
-**LU:** TUV000621  
-**Repositorio:** https://github.com/SebasMartinez07/TP2\_PVJ1
-**Motor:** Unity 3D
-**Versión:** 2022.3.62f3
+**Desarrollador:** Sebastián Luciano Martínez  <b>
+**LU:** TUV000621  <b>
+**Repositorio:** https://github.com/SebasMartinez07/TP2\_PVJ1 <b>
+**Motor:** Unity 3D <b>
+**Versión:** 2022.3.62f3 <b>
 
 \---
 
@@ -71,19 +71,19 @@ Lógica: En `Update()` calcula `distPlayer`. Si `distPlayer < radioDeteccion`, `
 
 ### Mapa Completo
 
-[Pick](Screenshots/MapaCompleto.png)
+[Mapa Completo](Screenshots/MapaCompleto.png)
 
 ### 1ra Parte del Mapa (2 Enemigos patrullan la zona)
 
-[Pick](Screenshots/1ra_ParteMapa.png)
+[1ra Parte del Mapa](Screenshots/1ra_ParteMapa.png)
 
 ### 2da Parte del Mapa (Spawner de Drones, Rayos Laseres y Suelo con Physics Material)
 
-[Pick](Screenshots/2da_ParteMapa.png)
+[2da Parte del Mapa](Screenshots/2da_ParteMapa.png)
 
 ### Zona de Victoria
 
-[Pick](Screenshots/GoalZone.png)
+[Zona de Victoria](Screenshots/GoalZone.png)
 
 \---
 
