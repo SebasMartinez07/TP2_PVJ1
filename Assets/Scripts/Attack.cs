@@ -4,10 +4,6 @@ using UnityEngine.AI;
 
 public class Attack : MonoBehaviour
 {
-    [Header("Raycast Shoot Settings")]
-    [SerializeField] private Transform gun;
-    [SerializeField] private float rayDistance;
-    [SerializeField] private Vector3 offsetGun;
 
     [Header("Raycast Shoot Settings")]
     [SerializeField] private Transform sword;
@@ -18,7 +14,6 @@ public class Attack : MonoBehaviour
     [SerializeField] private float damage = 10f;
 
     [SerializeField] private float cooldownAttack;
-    private bool canAttack = true;
     private Vector3 origin;
     private Vector3 dir;
     private bool isCharacter;
@@ -32,27 +27,6 @@ public class Attack : MonoBehaviour
     private void Awake()
     {
         pM = GetComponent<PlayerMovement>();
-    }
-
-    private void Update()
-    {
-
-        if (isPlayer)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack)
-            {
-                if (isMelee)
-                {
-                    Melee();
-                    
-                }
-                else
-                {
-                    Shoot();
-                }
-                
-            }
-        }
     }
 
     private void OnDrawGizmos()
@@ -72,20 +46,6 @@ public class Attack : MonoBehaviour
         }
 
 
-    }
-
-    public void Shoot()
-    {
-
-        RaycastInfo(offsetGun);
-
-        if (Physics.Raycast(origin, dir, out hit, rayDistance))
-        {
-
-            AplyDamage(hit.collider.gameObject);
-
-        }
-        StartCoroutine(AttackCooldown());
     }
 
     public void Melee()
@@ -119,13 +79,11 @@ public class Attack : MonoBehaviour
         {
             currentSpeed = pM.Speed;
             pM.Speed = 0f;
-            canAttack = false;
 
             yield return new WaitForSeconds(cooldownAttack);
 
 
             pM.Speed = currentSpeed;
-            canAttack = true;
         }
 
         
@@ -138,11 +96,10 @@ public class Attack : MonoBehaviour
     {
         if ((hitObj.CompareTag("Player") || hitObj.CompareTag("Character") ) && hitObj!=null)
         {
-            //if (hitObj == null) return;
             Debug.Log($"<color=red>Se aplico daño<>");
             hitObj.GetComponent<HealthSystem>().TakeDamage(damage);
 
-            isCharacter = true;//variable de apoyo
+            isCharacter = true;
         }
         else
         {

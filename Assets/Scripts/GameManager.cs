@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("Estado Actual")]
     public EstadoJuego estadoActual = EstadoJuego.Inicio;
 
-    [Header("UI - Arrastrá tus paneles acá")]
+    [Header("UI - Paneles")]
     public GameObject panelInicio;
     public GameObject panelHUD;
     public GameObject panelPausa;
@@ -25,14 +25,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Arranca en Inicio
         CambiarEstado(EstadoJuego.Inicio);
     }
 
     void Update()
     {
-        // Pausa con ESC solo si estás jugando
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // Pausa con ESC o tecla "P" solo si estás jugando
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             if (estadoActual == EstadoJuego.Jugando)
                 CambiarEstado(EstadoJuego.Pausa);
@@ -45,7 +44,6 @@ public class GameManager : MonoBehaviour
     {
         estadoActual = nuevoEstado;
 
-        // Apagamos todos los paneles primero
         if(panelInicio) panelInicio.SetActive(false);
         if(panelHUD) panelHUD.SetActive(false);
         if(panelPausa) panelPausa.SetActive(false);
@@ -92,8 +90,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-
-    // --- Métodos para los botones de la UI ---
 
     public void IniciarJuego()
     {

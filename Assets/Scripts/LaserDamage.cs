@@ -17,7 +17,6 @@ public class LaserDamage : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         col = GetComponent<Collider>();
-        // Que sea trigger
         col.isTrigger = true;
     }
 

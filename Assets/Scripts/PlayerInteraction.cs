@@ -19,7 +19,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
-        // Rayo desde la cámara hacia adelante
+        // Rayo desde la cámara hacia adelante para abrir Porton
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distancia, Color.green);
 

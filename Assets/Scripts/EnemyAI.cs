@@ -29,7 +29,6 @@ public class EnemyAI : MonoBehaviour
     private Transform playerTransform;
     private HealthSystem healthSystemPlayer;
     private Attack attack;
-    private bool isStunned;
 
     private void Awake()
     {
@@ -59,7 +58,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if (isStunned || playerTransform == null || (healthSystemPlayer != null && healthSystemPlayer.IsDead))
+        if (playerTransform == null || (healthSystemPlayer != null && healthSystemPlayer.IsDead))
         {
             agent.isStopped = true;
             return;
@@ -144,7 +143,6 @@ public class EnemyAI : MonoBehaviour
 {
     if (healthSystemPlayer == null) return;
     Debug.Log("Ataque contra el jugador");
-    // Si tenés el componente Attack, usalo. Si no, hace daño directo con tu HealthSystem
     if (attack != null)
     {
         attack.Melee();
@@ -195,30 +193,5 @@ IEnumerator AttackCooldown()
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
-
-
-
-
-    public void Stun(float duration)
-    {
-        StartCoroutine(StunRoutine(duration));
-    }
-
-    private IEnumerator StunRoutine(float duration)
-    {
-        isStunned = true;
-        agent.isStopped = true;
-        Debug.Log($"[ENEMIGO] Aturdido por {duration} segundos.");
-
-        yield return new WaitForSeconds(duration);
-
-        isStunned = false;
-        agent.isStopped = false;
-        Debug.Log(" [ENEMIGO] Recuperado del aturdimiento.");
-    }
-
-
-
-
 
 }

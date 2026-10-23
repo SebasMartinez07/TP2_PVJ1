@@ -28,7 +28,7 @@ public class DronKamikaze : MonoBehaviour
         if (player == null) return;
         float distPlayer = Vector3.Distance(transform.position, player.position);
 
-        // Si te ve, cambia a modo persecución
+        // cuando detecta al Player el dron cambia a modo persecusion
         if (distPlayer < radioDeteccion) persiguiendo = true;
 
         if (persiguiendo)
@@ -42,7 +42,7 @@ public class DronKamikaze : MonoBehaviour
             {
                 var vida = player.GetComponent<HealthSystem>();
                 if(vida != null) vida.TakeDamage(daño);
-                Destroy(gameObject); // explota
+                Destroy(gameObject); // explota al impactar con el player y causa daño
             }
         }
         else
