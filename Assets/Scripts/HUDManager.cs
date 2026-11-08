@@ -6,8 +6,8 @@ using TMPro;
 public class HUDManager : MonoBehaviour
 {
     [Header ("Referencias HUD")]
-    public TextMeshProUGUI textoVida;
-    public TextMeshProUGUI textoPuntos;
+    [SerializeField] private TextMeshProUGUI textoVida;
+    [SerializeField] private TextMeshProUGUI textoPuntos;
 
     void Start()
     {

@@ -11,11 +11,11 @@ public class GameManager : MonoBehaviour
     public EstadoJuego estadoActual = EstadoJuego.Inicio;
 
     [Header("UI - Paneles")]
-    public GameObject panelInicio;
-    public GameObject panelHUD;
-    public GameObject panelPausa;
-    public GameObject panelVictoria;
-    public GameObject panelDerrota;
+    [SerializeField] private GameObject panelInicio;
+    [SerializeField] private GameObject panelHUD;
+    [SerializeField] private GameObject panelPausa;
+    [SerializeField] private GameObject panelVictoria;
+    [SerializeField] private GameObject panelDerrota;
 
     void Awake()
     {
@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
                 if(panelInicio) panelInicio.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                Debug.Log("ESTADO: INICIO");
                 break;
 
             case EstadoJuego.Jugando:
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
                 if(panelHUD) panelHUD.SetActive(true);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                Debug.Log("ESTADO: JUGANDO");
                 break;
 
             case EstadoJuego.Pausa:
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
                 if(panelPausa) panelPausa.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                Debug.Log("ESTADO: PAUSA");
                 break;
 
             case EstadoJuego.Victoria:

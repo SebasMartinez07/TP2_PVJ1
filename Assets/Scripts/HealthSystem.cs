@@ -39,7 +39,8 @@ public class HealthSystem : MonoBehaviour
             Dead();
         }
 
-        FindObjectOfType<HUDManager>().ActualizarVida((int)currentHealth);
+    //Código para conectar la vida del Player al HUD
+    FindObjectOfType<HUDManager>().ActualizarVida((int)currentHealth);
 
     }
     private void Dead() 
