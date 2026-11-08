@@ -71,11 +71,11 @@ Lógica: En `Update()` calcula `distPlayer`. Si `distPlayer < radioDeteccion`, `
 
 ### Mapa Completo
 
-(Screenshots/MapaCompleto.png)
+![Mapa Completo](Screenshots/MapaCompleto.png)
 
 ### 1ra Parte del Mapa (2 Enemigos patrullan la zona)
 
-(Screenshots/1ra_ParteMapa.png)
+![1ra Parte del Mapa](Screenshots/1ra_ParteMapa.png)
 
 ### 2da Parte del Mapa (Spawner de Drones, Rayos Laseres y Suelo con Physics Material)
 
